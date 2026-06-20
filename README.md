@@ -12,7 +12,7 @@ This repository provides a comprehensive framework for training autoregressive l
 
 Given a sequence of tokens $\mathbf{x} = (x_1, x_2, \ldots, x_T)$, an autoregressive language model factorizes the joint probability $P(\mathbf{x})$ as a product of conditional probabilities:
 
-$$P(\mathbf{x}) = \prod_{t=1}^{T} P(x_t \mid x_{<t})$$
+$P(\mathbf{x}) = \prod_{t=1}^{T} P(x_t \mid x_{<t})$
 
 where $x_{<t} = (x_1, \ldots, x_{t-1})$ denotes the prefix of tokens preceding position $t$. The model, parameterized by $\theta$, is trained to minimize the negative log-likelihood (cross-entropy loss) over a training corpus $\mathcal{D}$:
 
