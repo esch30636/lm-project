@@ -16,7 +16,7 @@ $P(\mathbf{x}) = \prod_{t=1}^{T} P(x_t \mid x_{<t})$
 
 where $x_{<t} = (x_1, \ldots, x_{t-1})$ denotes the prefix of tokens preceding position $t$. The model, parameterized by $\theta$, is trained to minimize the negative log-likelihood (cross-entropy loss) over a training corpus $\mathcal{D}$:
 
-$$\mathcal{L}(\theta) = -\frac{1}{|\mathcal{D}|} \sum_{\mathbf{x} \in \mathcal{D}} \sum_{t=1}^{|\mathbf{x}|} \log P_\theta(x_t \mid x_{<t})$$
+$\mathcal{L}(\theta) = -\frac{1}{|\mathcal{D}|} \sum_{\mathbf{x} \in \mathcal{D}} \sum_{t=1}^{|\mathbf{x}|} \log P_\theta(x_t \mid x_{<t})$
 
 ### 1.2 Causal Self-Attention
 
@@ -142,11 +142,11 @@ Intuitively, a perplexity of $k$ indicates that the model is as uncertain on ave
 
 Text generation employs nucleus sampling (top-$p$) with temperature scaling. Given a prompt $x_{<t}$, the probability of token $x_t = w$ is modified by temperature $T$:
 
-$$P_T(w \mid x_{<t}) = \frac{\exp(z_w / T)}{\sum_{w' \in \mathcal{V}} \exp(z_{w'} / T)}$$
+$P_T(w \mid x_{<t}) = \frac{\exp(z_w / T)}{\sum_{w' \in \mathcal{V}} \exp(z_{w'} / T)}$
 
 where $z_w$ denotes the logit for token $w$. Nucleus sampling restricts the sampling space to the smallest set $\mathcal{V}^{(p)} \subset \mathcal{V}$ such that:
 
-$$\sum_{w \in \mathcal{V}^{(p)}} P_T(w \mid x_{<t}) \geq p$$
+$\sum_{w \in \mathcal{V}^{(p)}} P_T(w \mid x_{<t}) \geq p$
 
 The default configuration uses $T = 0.7$ and $p = 0.9$.
 
